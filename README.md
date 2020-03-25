@@ -1,1 +1,1 @@
-# pythonsolutions
+# ready-to-cook-recipes
