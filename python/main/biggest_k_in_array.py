@@ -21,4 +21,5 @@ assert  find([5,-1,1,0], 0) == None
 assert  find([5,-1], 2) == None
 assert  find([5], 2) == None
 assert  find([], 2) == None
+assert  find([], 0) == None
 assert  find([-3,-1,-8,0], 2) ==  -1
