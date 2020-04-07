@@ -24,10 +24,8 @@ def check(sourceStr):
         if el in open:
             st.append(el)
 
-    if len(st) == 0:
-        return True
+    return  len(st) == 0
 
-    return False
 
 
 assert(check("[[[]]]") == True)

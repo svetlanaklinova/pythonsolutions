@@ -6,16 +6,20 @@ def getAllSubArrays(ar):
 
     size = len(ar)
 
-    for startPoint in range(size):
+    for startPoint in range(size +1):
         for groupSize in range(startPoint, size + 1):
             for i in range(startPoint, groupSize):
                 num = ar[i]
                 if num not in temp:
                     temp.append(ar[i])
-            if temp:
+            if temp not in gen:
                 gen.append(temp)
             temp = []
-    print(gen)
+    mis = [ar[0], ar[size-1]]
+    if mis not in gen:
+        gen.append(mis)
+    return gen
+
 
 
 
