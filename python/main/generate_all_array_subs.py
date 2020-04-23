@@ -1,26 +1,15 @@
-''' Print all sub sets of array'''
-
-def getAllSubArrays(ar):
-    temp = []
-    gen = []
-
-    size = len(ar)
-
-    for startPoint in range(size +1):
-        for groupSize in range(startPoint, size + 1):
-            for i in range(startPoint, groupSize):
-                num = ar[i]
-                if num not in temp:
-                    temp.append(ar[i])
-            if temp not in gen:
-                gen.append(temp)
-            temp = []
-    mis = [ar[0], ar[size-1]]
-    if mis not in gen:
-        gen.append(mis)
-    return gen
+''' Print all subsets of array'''
 
 
+def sub_sets(sset):
+    return subsetsRecur([], sorted(sset))
 
 
-print(getAllSubArrays([1,2,3]))
+def subsetsRecur(current, sset):
+    if sset:
+        return subsetsRecur(current, sset[1:]) + subsetsRecur(current + [sset[0]], sset[1:])
+    return [current]
+
+# print(sub_sets([1,2,3]))
+assert sub_sets([1,2,3]) == [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
+
