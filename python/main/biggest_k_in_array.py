@@ -1,15 +1,13 @@
 
 
 
-
-
 def find(ar, k):
-    if not ar or k == 0:
+    if not ar or k < 1:
         return None
     s = set(ar)
     if k >= len(s):
         return None
-    while k != 0:
+    while k > 1:
         s.remove(max(s))
         k -= k
     return max(s)

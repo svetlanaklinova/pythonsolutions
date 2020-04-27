@@ -5,31 +5,21 @@ Find number in sorted array and return index. Return -1 if number does not exist
 @email: sklinova.home@gmail.com
 '''
 
-def get_index_if_number_exist_in_array(arr, number):
-    if number == -1:
-        return number
-    left = 0
-    right = len(arr) -1
-    total_steps = 0
-    result = -1
+def get_index_if_number_exist_in_array(nums, number):
+    first = 0
+    last = len(nums) - 1
+    mid = (first + last) // 2
 
-
-    while left <= right:
-        total_steps += 1
-        mid = (left + right)//2
-
-        if arr[mid] < number:
-            left = mid + 1
-        elif arr[mid] > number:
-            right = mid - 1
+    while first <= last:
+        if nums[mid] < number:
+            first = mid + 1
+        elif nums[mid] > number:
+            last = mid - 1
         else:
-            result = mid
-            break
-    if result > -1:
-        print('Found number {} at index {} in {} tries'.format(number, result, total_steps))
-    else:
-        print("Unable to find number {}".format(number))
-    return result
+            return mid
+
+        mid = (first + last) // 2
+    return -1
 
 
 
