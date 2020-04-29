@@ -1,15 +1,14 @@
-''' Print all subsets of array'''
+''' Generate and print all subsets of array'''
+
+from itertools import chain, combinations
+
+def subset(iterable):
+    lstTuples =  list(chain.from_iterable(set(combinations(iterable, r)) for r in range(len(iterable) + 1)))
+    s = [ list(aTuple) for aTuple in lstTuples]
+
+    print(s)
+    return s
 
 
-def sub_sets(sset):
-    return subsetsRecur([], sorted(sset))
-
-
-def subsetsRecur(current, sset):
-    if sset:
-        return subsetsRecur(current, sset[1:]) + subsetsRecur(current + [sset[0]], sset[1:])
-    return [current]
-
-# print(sub_sets([1,2,3]))
-assert sub_sets([1,2,3]) == [[], [3], [2], [2, 3], [1], [1, 3], [1, 2], [1, 2, 3]]
+assert subset([1,2,3]) == [[], [2], [3], [1], [1, 2], [1, 3], [2, 3], [1, 2, 3]]
 
