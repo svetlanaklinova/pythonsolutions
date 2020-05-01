@@ -7,8 +7,8 @@ consonants are c: remaining 21 letters. In the explanations, v and c represent v
 
 def calculateWays(wordLen, maxVowels):
     # prevent entering negative values
-    if maxVowels > 5:
-        maxVowels = 5
+    if maxVowels > wordLen:
+        maxVowels = wordLen
     elif maxVowels < 0:
         maxVowels = 0
 
