@@ -31,14 +31,15 @@ def calculateWays(wordLen, maxVowels):
             v = 1
             v = v * 5
             ways = ways + v
-        elif (wordLen - maxVowels) > 0 :
-            for i in range(wordLen):
-                c, v = 1, 1
-                for k in range(maxVowels):
-                    v = v * 5
-                for j in range(wordLen - maxVowels): # combination words: consonants and vowels
+
+        # combination words: consonants and vowels
+        for i in range(wordLen):
+            c, v = 1, 1
+            for k in range(maxVowels):
+                 v = v * 5
+                 for j in range(wordLen - maxVowels):
                     c = c * 21
-                ways = ways + (v * c)
+                    ways = ways + (v * c)
 
     print("wordLen {} with maxVowels {}. Total ways: {}".format(wordLen, maxVowels, ways))
     return ways
