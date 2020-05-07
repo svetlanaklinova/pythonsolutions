@@ -27,19 +27,20 @@ def calculateWays(wordLen, maxVowels):
 
 
     if maxVowels:
-        if maxVowels == wordLen and wordLen == 1:
+        if maxVowels == wordLen: # only vowels
             v = 1
-            v = v * 5
-            ways = ways + v
-
-        else:
             for i in range(wordLen):
-                c, v = 1, 1
-                for k in range(maxVowels):
-                     v = v * 5
-                     for j in range(wordLen - k):
-                        c = c * 21
-                        ways = ways + (v * c)
+                v = v * 5
+                ways = ways + v
+
+            # combinations
+        for i in range(wordLen):
+            c, v = 1, 1
+            for k in range(maxVowels): #vowels one by one
+                v = v * 5
+                for j in range(wordLen - maxVowels): # rest of chars (consonants)
+                    c = c * 21
+                    ways = ways + (v * c)
 
     print("wordLen {} with maxVowels {}. Total ways: {}".format(wordLen, maxVowels, ways))
     return ways
@@ -47,12 +48,12 @@ def calculateWays(wordLen, maxVowels):
 
 assert calculateWays(-1, -1) == 0
 assert calculateWays(0, 0) == 0
-assert calculateWays(1, 0) == 21
-assert calculateWays(1, 1) == 26
-assert calculateWays(4, 0) == 194481
-print(calculateWays(4, 1))
-print(calculateWays(4, 2))
-print(calculateWays(4, 3))
+assert calculateWays(1, 0) == 21 #{c}
+assert calculateWays(1, 1) == 26 #{c, v}
+assert calculateWays(4, 0) == 194481 #{cccc}
+assert calculateWays(4, 1) == 388941 #{cccc,vccc,cvcc,ccvc,cccv}
+print(calculateWays(4, 2)) #{cccc,vccc,cvcc,ccvc,cccv,vvcc,cvvc,ccvv,vcvc,cvcv}
+print(calculateWays(2, 2)) #{cc, vv, cv, vc}
 print(calculateWays(4, 5))
 
 
