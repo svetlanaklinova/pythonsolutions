@@ -18,7 +18,7 @@ def vowels_only(maxvowels):
     return total_vowels**maxvowels
 
 
-def calculateWays( wordlen , maxvowels):
+def calculatePossibilities(wordlen, maxvowels):
 
     ways = 0
     if not wordlen or maxvowels > wordlen:
@@ -26,21 +26,21 @@ def calculateWays( wordlen , maxvowels):
 
 
     if maxvowels == 0:
-                ways = ways + consonants_only(wordlen)
+         ways = consonants_only(wordlen)
 
     elif wordlen == maxvowels:
-                ways = single_pair() ** wordlen
+          ways = single_pair() ** wordlen
 
     elif maxvowels < wordlen:
         # consonants only
-                ways = ways + consonants_only(wordlen)
+           ways = consonants_only(wordlen)
 
                 #combinations
-                consonants_in_combination = wordlen - maxvowels
-                s_combination = vowels_only(maxvowels) * consonants_only(consonants_in_combination)
+           consonants_in_combination = wordlen - maxvowels
+           s_combination = vowels_only(maxvowels) * consonants_only(consonants_in_combination)
 
-                for i in range(wordlen):
-                    ways = ways + s_combination
+           for i in range(wordlen):
+               ways = ways + s_combination
 
 
 
@@ -49,34 +49,34 @@ def calculateWays( wordlen , maxvowels):
 
 ### Test ######
 expected = 21
-actual = calculateWays(1, 0)
+actual = calculatePossibilities(1, 0)
 print(f'expected {expected}, actual {actual}')
 assert actual == expected #{c} 21
 
 expected = 21 + 5
-actual = calculateWays(1, 1)
+actual = calculatePossibilities(1, 1)
 print(f'expected {expected}, actual {actual}')
-assert calculateWays(1, 1)== expected #{c,v} 21 + 5
+assert calculatePossibilities(1, 1) == expected #{c,v} 21 + 5
 
 expected = 5*5 + 21*21 + 21*5 + 5*21 #676
-actual = calculateWays(2, 2)
+actual = calculatePossibilities(2, 2)
 print(f'expected {expected}, actual {actual}')
 assert actual == expected  #{vv,cc,cv,vc} 5*5 + 21*21 + 21*5 + 5*21
 
 expected = 21*21 + 21*5 + 5*21 #651
-actual = calculateWays(2, 1) #{vc,cv,cc}
+actual = calculatePossibilities(2, 1) #{vc,cv,cc}
 print(f'expected {expected}, actual {actual}')
 assert actual == expected
 
 
 expected = 21**4 + 21*21*21*5 + 21*21*5*21 + 21*5*21*21 + 5*21*21*21 #379701
-actual = calculateWays(4, 1) #{cccc,cccv,ccvc,cvcc,vccc}
+actual = calculatePossibilities(4, 1) #{cccc,cccv,ccvc,cvcc,vccc}
 print(f'expected {expected}, actual {actual}')
 assert actual == expected
 
                                                           #
 expected = 21*21*21*21 #194481
-actual = calculateWays(4, 0) #{cccc}
+actual = calculatePossibilities(4, 0) #{cccc}
 print(f'expected {expected}, actual {actual}')
 assert actual == expected
 
