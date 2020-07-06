@@ -7,6 +7,7 @@ def generate_binary(length):
     result = []
     for l in lst:
         result.append(reduce(lambda x,y: str(x) + str(y), l, ''))
+
     return result
 
 def check_is_repeatable(str):
@@ -24,6 +25,7 @@ def exclude_zero_start_and_contin(num):
         if  l.startswith('0') or check_is_repeatable(l):
             continue
         result.append(l)
-    return result
+
+    return ', '.join(result)
 
 print(exclude_zero_start_and_contin(4))
